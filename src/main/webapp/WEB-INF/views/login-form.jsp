@@ -61,7 +61,7 @@
 						<input type="submit" class="btn btn-success"
 							value="Login" />
 							
-						<a href="user/register.htm">Click Here to Register</a>
+						<a href="register.htm">Click Here to Register</a>
 							
 					</div>
 				</div>
