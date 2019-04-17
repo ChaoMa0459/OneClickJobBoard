@@ -22,7 +22,7 @@
 		<div class="alert alert-info" role="alert">
 			<h4 class="text-center">
 				<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-				Register Form
+				User Registration
 			</h4>
 		</div>
 

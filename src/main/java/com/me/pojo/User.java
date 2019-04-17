@@ -9,7 +9,7 @@ import javax.persistence.Transient;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int userId;
+	private long userId;
 	@Column
 	private String username;
 	@Column
@@ -32,11 +32,11 @@ public class User {
 		this.type = type;
 	}
 
-	public int getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 
