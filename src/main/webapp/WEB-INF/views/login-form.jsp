@@ -55,13 +55,20 @@
 						</form:select>
 					</div>
 				</div>
+				<c:if test="${requestScope.errorLogin != null}">
+					<div class="alert alert-warning" style="margin-left: 30%;">
+						<p style="margin-left: 5%;">
+							<strong>Sorry!</strong> ${requestScope.errorLogin}
+						</p>
+					</div>
+				</c:if>
 
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
 						<input type="submit" class="btn btn-success"
 							value="Login" />
 							
-						<a href="register.htm">Click Here to Register</a>
+						<a href="register.htm" style="margin-left: 20px;">Click here to register</a>
 							
 					</div>
 				</div>

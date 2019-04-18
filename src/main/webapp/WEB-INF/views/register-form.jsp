@@ -39,7 +39,7 @@
 				</div>
 				<c:if test="${requestScope.errorDupUsername != null}">
 					<div class="alert alert-warning" style="margin-left: 30%;">
-						<p style="margin-left: 30%;">
+						<p style="margin-left: 5%;">
 							<strong>Sorry!</strong> ${requestScope.errorDupUsername}
 						</p>
 					</div>
@@ -63,7 +63,7 @@
 				</div>
 				<c:if test="${requestScope.errorConfirmPassword != null}">
 					<div class="alert alert-warning" style="margin-left: 30%;">
-						<p style="margin-left: 30%;">
+						<p style="margin-left: 5%;">
 							<strong>Sorry!</strong> ${requestScope.errorConfirmPassword}
 						</p>
 					</div>
@@ -90,6 +90,7 @@
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
 						<input type="submit" class="btn btn-success" value="Register" />
+						<a href="register.htm" style="margin-left: 20px;">Already have an account? Click here to login</a>
 					</div>
 				</div>
 
