@@ -4,6 +4,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import com.me.dao.UserDao;
 import com.me.pojo.User;
 
 public class RegisterValidator implements Validator
@@ -11,7 +12,7 @@ public class RegisterValidator implements Validator
 	@Override
 	public boolean supports(Class<?> clazz) {
 		//This Validator validates *just* User instances
-		return User.class.equals(clazz);
+		return User.class.equals(clazz) || UserDao.class.equals(clazz);
 	}
 
 	@Override

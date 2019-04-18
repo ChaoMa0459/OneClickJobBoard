@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.me.dao.UserDao;
 import com.me.pojo.User;
 import com.me.validator.RegisterValidator;
 
@@ -53,14 +55,18 @@ public class RegisterController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String successView(@Validated @ModelAttribute("user") User user, BindingResult bindingResult, ModelMap model) {
+	public String successView(@Validated @ModelAttribute("user") User user, BindingResult bindingResult, 
+			ModelMap model, UserDao userDao) {
 		if (bindingResult.hasErrors()) {
 			return "register-form";  //the are validation errors, go to the form view
 		}
 		// no errors, so go to the success view
 		System.out.println(user.getUsername());
 		System.out.println(user.getPassword());
+		
+		userDao.create(user);	
+		
 		return "register-success";
 	}
-
+	
 }
