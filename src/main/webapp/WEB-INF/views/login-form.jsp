@@ -22,7 +22,7 @@
 		<div class="alert alert-info" role="alert">
 			<h4 class="text-center">
 				<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-				User Registration
+				User Login
 			</h4>
 		</div>
 
@@ -47,22 +47,6 @@
 				</div>
 
 				<div class="form-group">
-					<label for="password" class="col-sm-4 control-label">Confirm Password: </label>
-					<div class="col-sm-8">
-						<form:input type="text" class="form-control" id="password"
-							path="confirmPassword" placeholder="Confirm Password" required="required" />
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="email" class="col-sm-4 control-label">Email: </label>
-					<div class="col-sm-8">
-						<form:input type="text" class="form-control" id="email"
-							path="email" placeholder="email" required="required" />
-					</div>
-				</div>
-
-				<div class="form-group">
 					<label for="type" class="col-sm-4 control-label">Type: </label>
 					<div class="col-sm-8">
 						<form:select path="type" id="type" class="form-control">
@@ -75,10 +59,13 @@
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
 						<input type="submit" class="btn btn-success"
-							value="Register" />
+							value="Login" />
+							
+						<a href="register.htm">Click Here to Register</a>
+							
 					</div>
 				</div>
-
+				
 			</form:form>
 		</div>
 	</div>

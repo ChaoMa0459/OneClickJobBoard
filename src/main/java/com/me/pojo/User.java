@@ -1,16 +1,26 @@
 package com.me.pojo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
+@Entity
 public class User {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long userId;
+	@Column
 	private String username;
-	
+	@Column
 	private String password;
-	
-	// @Transient
+	@Transient
 	private String confirmPassword;
-	
+	@Column
 	private String email;
-	
+	@Column
 	private String type;
 	
 	public User() {	
@@ -22,6 +32,14 @@ public class User {
 		this.password = password;
 		this.email = email;
 		this.type = type;
+	}
+
+	public long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
 	public String getUsername() {
