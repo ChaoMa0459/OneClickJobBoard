@@ -1,5 +1,7 @@
 package com.me.controller;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.servlet.ServletContext;
@@ -64,9 +66,25 @@ public class RegisterController {
 		System.out.println(user.getUsername());
 		System.out.println(user.getPassword());
 		
-		userDao.create(user);	
+		String username = user.getUsername();
 		
-		return "register-success";
+		List<User> users = userDao.getUserByUsername(username);
+		System.out.println("query result size " + users.size());
+		
+		// check confirm password
+		if (!user.getPassword().equals(user.getConfirmPassword())) {
+			model.addAttribute("errorConfirmPassword", "Password doesn't match.");
+			return "register-form";
+		}
+		
+		// check if username exists
+		if (users.size() == 0) {
+			userDao.create(user);
+			return "register-success";
+		} else {
+			model.addAttribute("errorDupUsername", "The username has been used.");
+			return "register-form";
+		}
 	}
 	
 }
