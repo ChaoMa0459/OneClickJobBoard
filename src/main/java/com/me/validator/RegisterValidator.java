@@ -12,7 +12,7 @@ public class RegisterValidator implements Validator
 	@Override
 	public boolean supports(Class<?> clazz) {
 		//This Validator validates *just* User instances
-		return User.class.equals(clazz) || UserDao.class.equals(clazz);
+		return User.class.equals(clazz);
 	}
 
 	@Override

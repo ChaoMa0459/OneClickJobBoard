@@ -41,7 +41,7 @@ public class RegisterController {
 	RegisterValidator registerValidator;
 
 	// Set a form validator
-	@InitBinder
+	@InitBinder("User")
 	protected void initBinder(WebDataBinder binder) {
 		binder.setValidator(registerValidator);
 	}
