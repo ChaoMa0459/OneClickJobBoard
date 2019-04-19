@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-Dear ${requestScope.user.username}, your application has been submitted successfully.
-Welcome ${requestScope.user.username} ${requestScope.user.password} 
+Dear ${requestScope.user.username}, your application has been submitted successfully.<br>
+<strong><a href="login.htm" style="margin-left: 20px;">Click here to login</a></strong>
 </body>
 </html>

@@ -3,7 +3,6 @@ package com.me.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.me.dao.UserDao;
 import com.me.pojo.User;
@@ -20,6 +20,7 @@ import com.me.validator.UserValidator;
 
 @RequestMapping("/login.htm")
 @Controller
+@SessionAttributes("user")
 public class LoginController {
 	@Autowired
 	UserValidator userValidator;
@@ -61,7 +62,7 @@ public class LoginController {
 		System.out.println(user.getPassword());
 		System.out.println(user.getType());
 		
-		model.addAttribute("type", user.getType());
+		
 		return "home-panel";
 	}
 }

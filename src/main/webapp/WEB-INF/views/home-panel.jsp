@@ -18,20 +18,26 @@ background-repeat: no-repeat;
 background-position: bottom center;
 background-size: 50%;">
 	<div class="container">
-		<ul class="nav nav-pills nav-stacked" role="tablist"  style="width: 200px; position: absolute; left: 25px; top: 10px;">
-			<li class="active" style="border: 1px solid #337ab7; border-radius: 6px;">
-			<a href="#">Home</a>
-			</li>
-			<li style="border: 1px solid #337ab7; border-radius: 6px;">
-			<a href="resume.htm">View Resume</a>
-			</li>
-			<li style="border: 1px solid #337ab7; border-radius: 6px;">
-			<a href="jobs.htm">Apply for Jobs</a>
-			</li>
-			<li style="border: 1px solid #337ab7; border-radius: 6px;">
-			<a href="home.htm">Logout</a>
-			</li>
-		</ul>
+		<div class="navbar-side"
+			style="width: 200px; position: absolute; left: 25px; top: 10px;">
+			<ul class="nav nav-pills nav-stacked" role="tablist"
+				style="width: 200px; position: absolute; left: 25px; top: 10px;">
+				<li class="active"
+					style="border: 1px solid #337ab7; border-radius: 6px;"><a
+					href="homepanel.htm">Home</a></li>
+				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
+					href="viewresume.htm">View Resumes</a></li>
+				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
+					href="createresume.htm">Create New Resume</a></li>
+				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
+					href="jobs.htm">Apply for Jobs</a></li>
+				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
+					href="login.htm">Logout</a></li>
+			</ul>
+		</div>
+		<div class="welcome" style="position: relative; left: 225px; top: 10px; width: 70%;">
+			<h1>Welcome!</h1>
+		</div>
 	</div>
 </body>
 
