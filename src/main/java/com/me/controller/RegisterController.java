@@ -1,9 +1,6 @@
 package com.me.controller;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,13 +12,12 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.me.dao.UserDao;
 import com.me.pojo.User;
 import com.me.validator.RegisterValidator;
 
-@RequestMapping("/user/register.htm")
+@RequestMapping("/register.htm")
 @Controller
 public class RegisterController {
 //	@Autowired
@@ -64,9 +60,25 @@ public class RegisterController {
 		System.out.println(user.getUsername());
 		System.out.println(user.getPassword());
 		
-		userDao.create(user);	
+		String username = user.getUsername();
 		
-		return "register-success";
+		List<User> users = userDao.getUserByUsername(username);
+		System.out.println("query result size " + users.size());
+		
+		// check confirm password
+		if (!user.getPassword().equals(user.getConfirmPassword())) {
+			model.addAttribute("errorConfirmPassword", "Password doesn't match.");
+			return "register-form";
+		}
+		
+		// check if username exists
+		if (users.size() == 0) {
+			userDao.create(user);
+			return "register-success";
+		} else {
+			model.addAttribute("errorDupUsername", "The username has been used.");
+			return "register-form";
+		}
 	}
 	
 }

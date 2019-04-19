@@ -1,8 +1,9 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!doctype HTML>
 <html>
 <head>
+<title>Job Board Registration</title>
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -16,7 +17,10 @@
 	crossorigin="anonymous">
 </head>
 
-<body>
+<body style="background: url(${pageContext.request.contextPath}/resources/images/Job-Search.jpg);
+background-repeat: no-repeat;
+background-position: bottom center;
+background-size: 50%;">
 	<div class="container">
 
 		<div class="alert alert-info" role="alert">
@@ -37,6 +41,13 @@
 							path="username" placeholder="Username" required="required" />
 					</div>
 				</div>
+				<c:if test="${requestScope.errorDupUsername != null}">
+					<div class="alert alert-warning" style="margin-left: 30%;">
+						<p style="margin-left: 5%;">
+							<strong>Sorry!</strong> ${requestScope.errorDupUsername}
+						</p>
+					</div>
+				</c:if>
 
 				<div class="form-group">
 					<label for="password" class="col-sm-4 control-label">Password:</label>
@@ -50,9 +61,17 @@
 					<label for="password" class="col-sm-4 control-label">Confirm Password: </label>
 					<div class="col-sm-8">
 						<form:input type="text" class="form-control" id="password"
-							path="confirmPassword" placeholder="Confirm Password" required="required" />
+							path="confirmPassword" placeholder="Confirm Password"
+							required="required" />
 					</div>
 				</div>
+				<c:if test="${requestScope.errorConfirmPassword != null}">
+					<div class="alert alert-warning" style="margin-left: 30%;">
+						<p style="margin-left: 5%;">
+							<strong>Sorry!</strong> ${requestScope.errorConfirmPassword}
+						</p>
+					</div>
+				</c:if>
 
 				<div class="form-group">
 					<label for="email" class="col-sm-4 control-label">Email: </label>
@@ -74,8 +93,8 @@
 
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
-						<input type="submit" class="btn btn-success"
-							value="Register" />
+						<input type="submit" class="btn btn-success" value="Register" />
+						<strong><a href="login.htm" style="margin-left: 20px;">Already have an account? Click here to login</a></strong>
 					</div>
 				</div>
 

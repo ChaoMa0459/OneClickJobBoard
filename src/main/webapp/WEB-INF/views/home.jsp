@@ -2,9 +2,12 @@
 <head>
 	<title>Home</title>
 </head>
-<body>
+<body  style="background: url(${pageContext.request.contextPath}/resources/images/Job-Search.jpg);
+background-repeat: no-repeat;
+background-position: bottom center;
+background-size: 50%;">
 <h1>
-	Hello world!  
+	Welcome to the job board!
 </h1>
-<a href="user/login.htm">Click Here to Login</a></body>
+<a href="login.htm">Click Here to Login</a></body>
 </html>

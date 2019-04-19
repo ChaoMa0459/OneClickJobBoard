@@ -6,4 +6,5 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean name="uservalidator" class="com.me.validator.UserValidator" />
 	<bean name="registervalidator" class="com.me.validator.RegisterValidator" />
+	<bean name="resumevalidator" class="com.me.validator.ResumeValidator" />
 </beans>
