@@ -23,7 +23,7 @@ import com.me.dao.UserDao;
 import com.me.pojo.User;
 import com.me.validator.RegisterValidator;
 
-@RequestMapping("/user/register.htm")
+@RequestMapping("/register.htm")
 @Controller
 public class RegisterController {
 //	@Autowired

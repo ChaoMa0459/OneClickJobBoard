@@ -18,7 +18,7 @@ import com.me.dao.UserDao;
 import com.me.pojo.User;
 import com.me.validator.UserValidator;
 
-@RequestMapping("/user/login.htm")
+@RequestMapping("/login.htm")
 @Controller
 public class LoginController {
 	@Autowired
@@ -60,6 +60,8 @@ public class LoginController {
 		System.out.println(user.getUsername());
 		System.out.println(user.getPassword());
 		System.out.println(user.getType());
+		
+		model.addAttribute("type", user.getType());
 		return "home-panel";
 	}
 }

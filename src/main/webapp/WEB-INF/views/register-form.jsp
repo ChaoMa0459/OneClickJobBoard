@@ -1,8 +1,9 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!doctype HTML>
 <html>
 <head>
+<title>Job Board Registration</title>
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -16,7 +17,10 @@
 	crossorigin="anonymous">
 </head>
 
-<body>
+<body style="background: url(${pageContext.request.contextPath}/resources/images/Job-Search.jpg);
+background-repeat: no-repeat;
+background-position: bottom center;
+background-size: 50%;">
 	<div class="container">
 
 		<div class="alert alert-info" role="alert">
@@ -90,7 +94,7 @@
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
 						<input type="submit" class="btn btn-success" value="Register" />
-						<a href="register.htm" style="margin-left: 20px;">Already have an account? Click here to login</a>
+						<strong><a href="login.htm" style="margin-left: 20px;">Already have an account? Click here to login</a></strong>
 					</div>
 				</div>
 
