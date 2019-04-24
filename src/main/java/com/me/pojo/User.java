@@ -1,17 +1,23 @@
 package com.me.pojo;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 @Entity
 public class User {
 	@Id
 	@Column(name = "user_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO) // should be changed into AUTO?
 	private long userId;
 	@Column
 	private String username;
@@ -23,6 +29,9 @@ public class User {
 	private String email;
 	@Column
 	private String type;
+	
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Resume> resumes;
 	
 	public User() {	
 	}
@@ -81,6 +90,21 @@ public class User {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public List<Resume> getResumes() {
+		return resumes;
+	}
+
+	public void setResumes(List<Resume> resumes) {
+		this.resumes = resumes;
+	}
+	
+	public void addResume(Resume resume) {
+		if (resumes == null) {
+			resumes = new ArrayList<Resume>();
+		}
+		resumes.add(resume);
 	}
 
 }

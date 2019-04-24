@@ -21,18 +21,18 @@ public class UserDao extends DAO {
 		return user;
 	}
 	
-	public List<User> getUserByUsername(String username) {
-		List<User> users = new ArrayList<User>();
+	public User getUserByUsername(String username) {
+		User user = null;
 		try {
 			begin();
 			Query q = getSession().createQuery("from User where username= :username");
             q.setString("username", username);
-            users = q.list();
+            user = q.uniqueResult() == null? null: (User)q.uniqueResult();   
 			commit();
 		} catch (HibernateException e) {
 			rollback();
 		}
-		return users;
+		return user;
 	}
 
 }

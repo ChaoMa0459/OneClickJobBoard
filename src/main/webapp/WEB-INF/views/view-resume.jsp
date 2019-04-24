@@ -407,7 +407,7 @@
 
 					<div class="form-group">
 						<div class="col-sm-offset-4 col-sm-8">
-							<input type="submit" class="btn btn-success" value="Create" />
+						<a href="viewresume.htm"><input class="btn btn-success" value="Create"></a>
 						</div>
 					</div>
 

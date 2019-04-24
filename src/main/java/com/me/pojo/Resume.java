@@ -2,9 +2,9 @@ package com.me.pojo;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Resume {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO) // should be changed into AUTO?
 	private long resumeId;
 	
 	// basic information
@@ -38,8 +38,8 @@ public class Resume {
 	@Column
 	private boolean needSponsorship;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id")
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false, updatable = false, insertable = true)
 	private User user;
 	
 	// address
@@ -73,22 +73,20 @@ public class Resume {
 	private String workCity;
 	@Column(name = "work_description")
 	private String workDescription;
-	@Column(name = "start_date")
-	private Date startDate;
-	@Column(name = "end_date")
-	private Date endDate;
+	@Column(name = "work_length")
+	private String workLength;
 	
 	// self identify
 	@Column
 	private String gender;
 	@Column
-	private boolean ifVeteran;
+	private String ifVeteran;
 	@Column
-	private boolean hispanicOrLatino;
+	private String hispanicOrLatino;
 	@Column
 	private String race;
 	@Column
-	private boolean ifDisabled;
+	private String ifDisabled;
 
 	public long getResumeId() {
 		return resumeId;
@@ -282,20 +280,12 @@ public class Resume {
 		this.workDescription = workDescription;
 	}
 
-	public Date getStartDate() {
-		return startDate;
+	public String getWorkLength() {
+		return workLength;
 	}
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
-	public Date getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
+	public void setWorkLength(String workLength) {
+		this.workLength = workLength;
 	}
 
 	public String getGender() {
@@ -306,19 +296,19 @@ public class Resume {
 		this.gender = gender;
 	}
 
-	public boolean isIfVeteran() {
+	public String getIfVeteran() {
 		return ifVeteran;
 	}
 
-	public void setIfVeteran(boolean ifVeteran) {
+	public void setIfVeteran(String ifVeteran) {
 		this.ifVeteran = ifVeteran;
 	}
 
-	public boolean isHispanicOrLatino() {
+	public String getHispanicOrLatino() {
 		return hispanicOrLatino;
 	}
 
-	public void setHispanicOrLatino(boolean hispanicOrLatino) {
+	public void setHispanicOrLatino(String hispanicOrLatino) {
 		this.hispanicOrLatino = hispanicOrLatino;
 	}
 
@@ -330,11 +320,11 @@ public class Resume {
 		this.race = race;
 	}
 
-	public boolean isIfDisabled() {
+	public String getIfDisabled() {
 		return ifDisabled;
 	}
 
-	public void setIfDisabled(boolean ifDisabled) {
+	public void setIfDisabled(String ifDisabled) {
 		this.ifDisabled = ifDisabled;
 	}
 

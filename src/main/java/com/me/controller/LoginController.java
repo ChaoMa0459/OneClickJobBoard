@@ -2,6 +2,8 @@ package com.me.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -38,25 +40,26 @@ public class LoginController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String successView(@Validated @ModelAttribute("user") User user, BindingResult bindingResult, ModelMap model,
-			UserDao userDao) {
+			UserDao userDao, HttpSession session) {
 		if (bindingResult.hasErrors()) {
 			return "login-form"; // the are validation errors, go to the form view
 		}
 
 		// check password
 		String username = user.getUsername();
-		List<User> users = userDao.getUserByUsername(username);
-		if (users.size() == 0) {
+		User registerdUser = userDao.getUserByUsername(username);
+		if (registerdUser == null) {
 			model.addAttribute("errorLogin", "No such user.");
 			return "login-form";
 		}
 		
-		User registerdUser = users.get(0);
 		// check confirm password
 		if (!user.getPassword().equals(registerdUser.getPassword())) {
 			model.addAttribute("errorLogin", "Wrong password.");
 			return "login-form";
 		}
+		
+		session.setAttribute("userId", registerdUser.getUserId());
 		// no errors, so go to the success view
 		System.out.println(user.getUsername());
 		System.out.println(user.getPassword());

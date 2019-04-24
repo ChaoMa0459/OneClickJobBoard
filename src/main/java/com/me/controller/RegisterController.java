@@ -59,20 +59,18 @@ public class RegisterController {
 		// no errors, so go to the success view
 		System.out.println(user.getUsername());
 		System.out.println(user.getPassword());
-		
-		String username = user.getUsername();
-		
-		List<User> users = userDao.getUserByUsername(username);
-		System.out.println("query result size " + users.size());
-		
+						
 		// check confirm password
 		if (!user.getPassword().equals(user.getConfirmPassword())) {
 			model.addAttribute("errorConfirmPassword", "Password doesn't match.");
 			return "register-form";
 		}
 		
+		String username = user.getUsername();
+		User registerdUser = userDao.getUserByUsername(username);
+		
 		// check if username exists
-		if (users.size() == 0) {
+		if (registerdUser == null) {
 			userDao.create(user);
 			return "register-success";
 		} else {
