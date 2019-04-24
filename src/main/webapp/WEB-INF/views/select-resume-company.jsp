@@ -27,13 +27,11 @@ background-size: 50%;">
 				style="width: 200px; position: absolute; left: 25px; top: 10px;">
 				<li class="active"
 					style="border: 1px solid #337ab7; border-radius: 6px;"><a
-					href="homepanel.htm">Home</a></li>
+					href="company-homepanel.htm">Home</a></li>
 				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
-					href="viewresume.htm">View Resumes</a></li>
+					href="viewjob.htm">View Jobs</a></li>
 				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
-					href="createresume.htm">Create New Resume</a></li>
-				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
-					href="viewjob-applicant.htm">Apply for Jobs</a></li>
+					href="createjob.htm">Create New Job</a></li>
 				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
 					href="logout.htm">Logout</a></li>
 			</ul>
@@ -44,15 +42,16 @@ background-size: 50%;">
 
 			<div class="row">
 
-				<form:form commandName="applyJobChoice" class="form-horizontal">
+				<form:form commandName="resumeChoice" class="form-horizontal">
 
 					<div class="form-group">
-						<label for="jobId" class="col-sm-4 control-label">Please Select a Job: </label>
+						<label for="resumeName" class="col-sm-4 control-label">Please
+							Select a Resume: </label>
 						<div class="col-sm-8" style="width: 40%">
-							<form:select path="jobId" id="jobId"
+							<form:select path="resumeName" id="resumeName"
 								class="form-control">
-								<c:forEach var="job" items="${requestScope.jobs}">
-									<form:option value="${job.getJobId()}">${job.getTitle()}, ${job.getCompany()}</form:option>
+								<c:forEach var="resume" items="${requestScope.resumes}">
+									<form:option value="${resume.getResumeName()}">${resume.getResumeName()}</form:option>
 								</c:forEach>
 							</form:select>
 						</div>

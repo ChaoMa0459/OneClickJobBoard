@@ -112,7 +112,13 @@
 
 					<div class="form-group">
 						<div class="col-sm-offset-4 col-sm-8">
-						<a href="viewjob.htm"><input class="btn btn-success" value="Back"></a>
+						<a href="select-resume-company.htm"><input class="btn btn-success" value="View Applications" style="width: 200px"></a>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-8">
+						<a href="viewjob.htm"><input class="btn btn-success" value="Back" style="width: 200px"></a>
 						</div>
 					</div>
 

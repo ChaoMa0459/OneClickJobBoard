@@ -7,12 +7,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.me.dao.JobApplicationDao;
 import com.me.dao.ResumeDao;
-import com.me.dao.UserDao;
 import com.me.pojo.JobApplication;
 import com.me.pojo.Resume;
 import com.me.pojo.ResumeChoice;

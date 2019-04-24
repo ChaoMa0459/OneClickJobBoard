@@ -52,7 +52,7 @@ public class JobApplicationDao extends DAO {
 		List<JobApplication> applications = new ArrayList<JobApplication>();
 		try {
 			begin();
-			Query q = getSession().createQuery("from Job where job_id= :job_id");
+			Query q = getSession().createQuery("from JobApplication where job_id= :job_id");
 			q.setLong("job_id", job_id);
 			applications = q.list();
 			commit();

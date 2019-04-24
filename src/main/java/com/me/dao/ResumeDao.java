@@ -49,6 +49,20 @@ public class ResumeDao extends DAO {
 		return resumes;
 	}
 	
+	public List<Resume> getByResumeName(String resumename) {
+		List<Resume> resumes = new ArrayList<Resume>();
+		try {
+			begin();
+			Query q = getSession().createQuery("from Resume where resume_name= :resumename");
+			q.setString("resumename", resumename);
+            resumes = q.list();
+			commit();
+		} catch (HibernateException e) {
+			rollback();
+		}
+		return resumes;
+	}
+	
 	public Resume getByUserIdAndName(long user_id, String resumename) {
 		Resume resume = null;
 		try {

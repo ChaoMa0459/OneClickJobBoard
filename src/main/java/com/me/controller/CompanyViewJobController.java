@@ -40,12 +40,13 @@ public class CompanyViewJobController {
 		System.out.println("getByUserIdAndName: " + job);
 		
 		model.addAttribute("job", job);
+		session.setAttribute("jobId", job.getJobId());
 
 		return "view-job";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String successView(ModelMap model) {
-		return "redirect:viewresumedetail.htm";
+		return "redirect:viewresumedetail-company.htm";
 	}
 }

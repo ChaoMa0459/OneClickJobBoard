@@ -16,9 +16,8 @@ public class JobApplication {
 	private long resumeId;
 	@Column(name = "job_id")
 	private long jobId;
-	
 	@Column
-	private String state;
+	private String status;
 
 	public long getJobApplyId() {
 		return jobApplyId;
@@ -44,12 +43,12 @@ public class JobApplication {
 		this.jobId = jobId;
 	}
 
-	public String getState() {
-		return state;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setState(String state) {
-		this.state = state;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }
