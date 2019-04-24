@@ -4,16 +4,18 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.mail.DefaultAuthenticator;
+import org.apache.commons.mail.Email;
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.SimpleEmail;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import com.me.dao.ResumeDao;
-import com.me.dao.UserDao;
 import com.me.pojo.Resume;
 import com.me.pojo.User;
 
@@ -36,7 +38,7 @@ public class CompanyViewResumeController {
 
 		// should pass resume id instead
 		List<Resume> resumes = resumeDao.getByResumeName(resumeName);
-		resume = resumes.get(0);
+		resume = resumes.get(resumes.size() - 1);
 
 		System.out.println("getByResumeName: " + resume);
 
@@ -53,6 +55,28 @@ public class CompanyViewResumeController {
 		System.out.println("--- CompnaySendInterviewController ---");
 		System.out.println("applicantEmail: " + applicantEmail);
 		
+		try {
+		sendEmail(applicantEmail);
+		} catch(EmailException e) {
+			e.printStackTrace();
+			return "redirect:company-homepanel.htm";
+		}
+		
+		System.out.println("Interview Email is sent.");
 		return "redirect:company-homepanel.htm";
 	}
+	
+	public void sendEmail(String applicantEmail) throws EmailException {
+        Email email = new SimpleEmail();
+        email.setHostName("smtp.googlemail.com");
+        email.setSmtpPort(465);
+        //User your gmail username and password
+        email.setAuthenticator(new DefaultAuthenticator("michael1630459@gmail.com", "wanjiuwan123"));
+        email.setSSLOnConnect(true);
+        email.setFrom("michael1630459@gmail.com");
+        email.setSubject("Test Interview Mail");
+        email.setMsg("Conguatulations! You are selected for intervew! Please reply to this email for more details.");
+        email.addTo(applicantEmail);
+        email.send();
+    }
 }
