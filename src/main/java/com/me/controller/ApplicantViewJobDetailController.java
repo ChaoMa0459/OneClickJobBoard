@@ -39,8 +39,9 @@ public class ApplicantViewJobDetailController {
 
 		System.out.println("getById: " + job);
 		
-		model.addAttribute("job", job);
+		session.setAttribute("jobId", jobId);
 
+		model.addAttribute("job", job);
 		return "view-job-applicant";
 	}
 
