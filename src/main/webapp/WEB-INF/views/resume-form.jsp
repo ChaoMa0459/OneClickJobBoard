@@ -29,7 +29,7 @@
 					style="border: 1px solid #337ab7; border-radius: 6px;"><a
 					href="createresume.htm">Create New Resume</a></li>
 				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
-					href="jobs.htm">Apply for Jobs</a></li>
+					href="viewjob-applicant.htm">Apply for Jobs</a></li>
 				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
 					href="logout.htm">Logout</a></li>
 			</ul>

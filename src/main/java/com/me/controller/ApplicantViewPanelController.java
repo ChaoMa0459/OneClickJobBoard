@@ -23,7 +23,7 @@ public class ApplicantViewPanelController {
 	public String formView(ModelMap model, ResumeChoice resumeChoice, ResumeDao resumeDao, UserDao userDao, HttpSession session) {
 
 		User user = (User) session.getAttribute("user");
-		if (user == null) {
+		if (user == null || session.getAttribute("userId") == null) {
 			return "redirect:login.htm";
 		}
 				

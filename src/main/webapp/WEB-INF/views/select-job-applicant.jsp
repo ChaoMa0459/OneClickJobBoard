@@ -1,6 +1,8 @@
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<title>Job Board Home</title>
+<title>Job Board View Panel</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -13,7 +15,8 @@
 	integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
 	crossorigin="anonymous">
 </head>
-<body style="background: url(${pageContext.request.contextPath}/resources/images/Job-Search.jpg);
+<body
+	style="background: url(${pageContext.request.contextPath}/resources/images/Job-Search.jpg);
 background-repeat: no-repeat;
 background-position: bottom center;
 background-size: 50%;">
@@ -30,15 +33,40 @@ background-size: 50%;">
 				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
 					href="createresume.htm">Create New Resume</a></li>
 				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
-					href="viewjob-applicant.htm">Apply for Jobs</a></li>
+					href="jobs.htm">Apply for Jobs</a></li>
 				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
 					href="logout.htm">Logout</a></li>
 			</ul>
 		</div>
-		<div class="welcome" style="position: relative; left: 225px; top: 10px; width: 70%;">
-			<h1>Welcome to the Quick Apply! <br></h1>
-			<h3>Source Code:<br>
-			<a href="https://github.com/SwagMC/OneClickJobBoard">https://github.com/SwagMC/OneClickJobBoard</a></h3>
+
+		<div class="resume-form"
+			style="position: relative; left: 225px; top: 50px; width: 70%;">
+
+			<div class="row">
+
+				<form:form commandName="applyJobChoice" class="form-horizontal">
+
+					<div class="form-group">
+						<label for="jobId" class="col-sm-4 control-label">Please Select a Job: </label>
+						<div class="col-sm-8" style="width: 40%">
+							<form:select path="jobId" id="jobId"
+								class="form-control">
+								<c:forEach var="job" items="${requestScope.jobs}">
+									<form:option value="${job.getJobId()}">${job.getTitle()} ${job.getCompany()}</form:option>
+								</c:forEach>
+							</form:select>
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-8">
+							<input type="submit" class="btn btn-success" value="Go" />
+						</div>
+					</div>
+
+				</form:form>
+			</div>
 		</div>
 	</div>
 </body>

@@ -24,7 +24,7 @@ public class ApplicantViewResumeController {
 			@RequestParam("resumeName") String resumeName, HttpSession session) {
 
 		User user = (User) session.getAttribute("user");
-		if (user == null) {
+		if (user == null || session.getAttribute("userId") == null) {
 			return "redirect:login.htm";
 		}
 

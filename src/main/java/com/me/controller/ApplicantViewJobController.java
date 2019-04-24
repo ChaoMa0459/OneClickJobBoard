@@ -10,42 +10,39 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.me.dao.JobDao;
+import com.me.dao.UserDao;
+import com.me.pojo.ApplyJobChoice;
 import com.me.pojo.Job;
-import com.me.pojo.JobChoice;
 import com.me.pojo.User;
 
-@RequestMapping("/viewjob.htm")
+@RequestMapping("/viewjob-applicant.htm")
 @Controller
 @SessionAttributes("user")
-public class CompanyViewPanelController {
+public class ApplicantViewJobController {
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String formView(ModelMap model, JobChoice jobChoice, JobDao jobDao, HttpSession session) {
+	public String formView(ModelMap model, ApplyJobChoice applyJobChoice, JobDao jobDao, UserDao userDao, HttpSession session) {
 
 		User user = (User) session.getAttribute("user");
-		if (user == null || session.getAttribute("userId") == null) {
+		if (user == null) {
 			return "redirect:login.htm";
 		}
-				
-		long userId = (Long)session.getAttribute("userId");
-		
-		System.out.println("userId: " + userId);
-
-		List<Job> jobs = jobDao.getByUserId(userId);
+						
+		List<Job> jobs = jobDao.getAll();
 		
 		System.out.println("jobs: " + jobs.size());
 		
 		model.addAttribute("jobs", jobs);	
-		return "view-panel-company";
+		return "select-job-applicant";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String successView(@ModelAttribute("jobChoice") JobChoice jobChoice, ModelMap model) {
+	public String successView(@ModelAttribute("applyJobChoice") ApplyJobChoice applyJobChoice, ModelMap model) {
 		
-		model.addAttribute("jobName", jobChoice.getJobName());
+		model.addAttribute("jobId", applyJobChoice.getJobId());
 		
-		System.out.println("jobName: " + jobChoice.getJobName());
+		System.out.println("jobId: " + applyJobChoice.getJobId());
 		
-		return "redirect:viewjobdetail.htm";
+		return "redirect:viewjobdetail-applicant.htm";
 	}
 }

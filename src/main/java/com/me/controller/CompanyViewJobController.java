@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.me.dao.JobDao;
-import com.me.dao.ResumeDao;
 import com.me.pojo.Job;
-import com.me.pojo.Resume;
 import com.me.pojo.User;
 
 @RequestMapping("/viewjobdetail.htm")
@@ -27,7 +25,7 @@ public class CompanyViewJobController {
 			@RequestParam("jobName") String jobName, HttpSession session) {
 
 		User user = (User) session.getAttribute("user");
-		if (user == null) {
+		if (user == null || session.getAttribute("userId") == null) {
 			return "redirect:login.htm";
 		}
 

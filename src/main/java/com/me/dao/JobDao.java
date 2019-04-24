@@ -21,6 +21,33 @@ public class JobDao extends DAO {
 		return job;
 	}
 	
+	public List<Job> getAll() {
+		List<Job> jobs = new ArrayList<Job>();
+		try {
+			begin();
+			Query q = getSession().createQuery("from Job");
+			jobs = q.list();
+			commit();
+		} catch (HibernateException e) {
+			rollback();
+		}
+		return jobs;
+	}
+	
+	public Job getById(long job_id) {
+		Job job = null;
+		try {
+			begin();
+			Query q = getSession().createQuery("from Job where jobId= :job_id");
+			q.setLong("job_id", job_id);
+			job = q.uniqueResult() == null ? null : (Job)q.uniqueResult();
+			commit();
+		} catch (HibernateException e) {
+			rollback();
+		}
+		return job;
+	}
+	
 	public List<Job> getByUserId(long user_id) {
 		List<Job> jobs = new ArrayList<Job>();
 		try {
