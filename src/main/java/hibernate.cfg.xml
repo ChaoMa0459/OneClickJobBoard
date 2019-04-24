@@ -15,6 +15,7 @@
 		<mapping class="com.me.pojo.User" />
 		<mapping class="com.me.pojo.Resume" />
 		<mapping class="com.me.pojo.Job" />
+		<mapping class="com.me.pojo.JobApply" />
 
 	</session-factory>
 </hibernate-configuration>

@@ -23,11 +23,13 @@
 				style="width: 200px; position: absolute; left: 25px; top: 10px;">
 				<li class="active"
 					style="border: 1px solid #337ab7; border-radius: 6px;"><a
-					href="company-homepanel.htm">Home</a></li>
+					href="homepanel.htm">Home</a></li>
 				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
-					href="viewjob.htm">View Jobs</a></li>
+					href="viewresume.htm">View Resumes</a></li>
 				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
-					href="createjob.htm">Create New Job</a></li>
+					href="createresume.htm">Create New Resume</a></li>
+				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
+					href="viewjob-applicant.htm">Apply for Jobs</a></li>
 				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
 					href="logout.htm">Logout</a></li>
 			</ul>
@@ -69,13 +71,14 @@
 					</div>
 
 					<div class="form-group">
-						<label for="title" class="col-sm-4 control-label">Job Title:</label>
+						<label for="title" class="col-sm-4 control-label">Job
+							Title:</label>
 						<div class="col-sm-8">
 							<form:input type="text" class="form-control" id="title"
 								path="title" placeholder="Job Title" required="required" />
 						</div>
 					</div>
-					
+
 					<div class="form-group">
 						<label for="company" class="col-sm-4 control-label">Company
 							Name:</label>
@@ -97,7 +100,8 @@
 						<label for="overview" class="col-sm-4 control-label">Overview:</label>
 						<div class="col-sm-8">
 							<form:input type="text" class="form-control" id="overview"
-								path="overview" placeholder="overview" required="required"  style="height: 60px;"/>
+								path="overview" placeholder="overview" required="required"
+								style="height: 60px;" />
 						</div>
 					</div>
 
@@ -106,13 +110,22 @@
 						<div class="col-sm-8">
 							<form:input type="text" class="form-control" id="requirements"
 								path="requirements" placeholder="Requirements"
-								required="required"  style="height: 200px;"/>
+								required="required" style="height: 200px;" />
+						</div>
+					</div>
+					
+					<form:input type="hidden" id="jobId" path="jobId"/>
+
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-8">
+							<input type="submit" class="btn btn-success" value="Apply" />
 						</div>
 					</div>
 
 					<div class="form-group">
 						<div class="col-sm-offset-4 col-sm-8">
-						<a href="viewjob.htm"><input class="btn btn-success" value="Back"></a>
+							<a href="viewjob-applicant.htm"><input
+								class="btn btn-success" value="Back" style="width: 65px"></a>
 						</div>
 					</div>
 
