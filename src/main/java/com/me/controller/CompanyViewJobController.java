@@ -10,18 +10,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.me.dao.JobDao;
 import com.me.dao.ResumeDao;
+import com.me.pojo.Job;
 import com.me.pojo.Resume;
 import com.me.pojo.User;
 
 @RequestMapping("/viewjobdetail.htm")
 @Controller
 @SessionAttributes("user")
-public class ViewJobController {
+public class CompanyViewJobController {
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String formView(ModelMap model, @ModelAttribute("resume") Resume resume, ResumeDao resumeDao,
-			@RequestParam("resumeName") String resumeName, HttpSession session) {
+	public String formView(ModelMap model, @ModelAttribute("job") Job job, JobDao jobDao,
+			@RequestParam("jobName") String jobName, HttpSession session) {
 
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
@@ -30,17 +33,17 @@ public class ViewJobController {
 
 		long userId = (Long) session.getAttribute("userId");
 
-		System.out.println("ViewResumeController: ");
+		System.out.println("ViewJobController: ");
 		System.out.println("userId: " + userId);
-		System.out.println("resumeName: " + resumeName);
+		System.out.println("jobName: " + jobName);
 
-		resume = resumeDao.getByUserIdAndName(userId, resumeName);
+		job = jobDao.getByUserIdAndName(userId, jobName);
 
-		System.out.println("getByUserIdAndName: " + resume);
+		System.out.println("getByUserIdAndName: " + job);
 		
-		model.addAttribute("resume", resume);
+		model.addAttribute("job", job);
 
-		return "view-resume";
+		return "view-job";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)

@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @RequestMapping("/homepanel.htm")
 @Controller
-public class HomePanelController {
+public class ApplicantHomePanelController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String formView(ModelMap model, HttpSession session) {
 		if (session.getAttribute("user") == null) {
 			return "redirect:login.htm";
 		}
-		return "home-panel";
+		return "home-panel-applicant";
 	}
 }

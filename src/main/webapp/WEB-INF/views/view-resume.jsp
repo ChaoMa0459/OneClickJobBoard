@@ -41,7 +41,7 @@
 			<div class="alert alert-info" role="alert">
 				<h4 class="text-center">
 					<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-					New Resume Form
+					View Resume
 				</h4>
 			</div>
 
@@ -407,7 +407,7 @@
 
 					<div class="form-group">
 						<div class="col-sm-offset-4 col-sm-8">
-						<a href="viewresume.htm"><input class="btn btn-success" value="Create"></a>
+						<a href="viewresume.htm"><input class="btn btn-success" value="Back"></a>
 						</div>
 					</div>
 

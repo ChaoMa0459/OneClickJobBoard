@@ -25,7 +25,7 @@ public class JobDao extends DAO {
 		List<Job> jobs = new ArrayList<Job>();
 		try {
 			begin();
-			Query q = getSession().createQuery("from Resume where user_id= :user_id");
+			Query q = getSession().createQuery("from Job where user_id= :user_id");
 			q.setLong("user_id", user_id);
 			jobs = q.list();
 			commit();
@@ -39,7 +39,7 @@ public class JobDao extends DAO {
 		List<Job> jobs = new ArrayList<Job>();
 		try {
 			begin();
-			Query q = getSession().createQuery("from Resume where title= :title");
+			Query q = getSession().createQuery("from Job where title= :title");
 			q.setString("title", title);
 			jobs = q.list();
 			commit();

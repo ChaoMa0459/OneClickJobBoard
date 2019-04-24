@@ -8,19 +8,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import com.me.dao.ResumeDao;
-import com.me.dao.UserDao;
-import com.me.pojo.Resume;
-import com.me.pojo.ResumeChoice;
+
+import com.me.dao.JobDao;
+import com.me.pojo.Job;
+import com.me.pojo.JobChoice;
 import com.me.pojo.User;
 
-@RequestMapping("/viewresume.htm")
+@RequestMapping("/viewjob.htm")
 @Controller
 @SessionAttributes("user")
-public class ViewPanelController {
+public class CompanyViewPanelController {
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String formView(ModelMap model, ResumeChoice resumeChoice, ResumeDao resumeDao, UserDao userDao, HttpSession session) {
+	public String formView(ModelMap model, JobChoice jobChoice, JobDao jobDao, HttpSession session) {
 
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
@@ -31,21 +31,21 @@ public class ViewPanelController {
 		
 		System.out.println("userId: " + userId);
 
-		List<Resume> resumes = resumeDao.getByUserId(userId);
+		List<Job> jobs = jobDao.getByUserId(userId);
 		
-		System.out.println("resumes: " + resumes.size());
+		System.out.println("jobs: " + jobs.size());
 		
-		model.addAttribute("resumes", resumes);	
-		return "view-panel";
+		model.addAttribute("jobs", jobs);	
+		return "view-panel-company";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String successView(@ModelAttribute("resumeChoice") ResumeChoice resumeChoice, ModelMap model) {
+	public String successView(@ModelAttribute("jobChoice") JobChoice jobChoice, ModelMap model) {
 		
-		model.addAttribute("resumeName", resumeChoice.getResumeName());
+		model.addAttribute("jobName", jobChoice.getJobName());
 		
-		System.out.println("resumeName: " + resumeChoice.getResumeName());
+		System.out.println("jobName: " + jobChoice.getJobName());
 		
-		return "redirect:viewresumedetail.htm";
+		return "redirect:viewjobdetail.htm";
 	}
 }

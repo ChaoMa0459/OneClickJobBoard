@@ -17,17 +17,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.me.dao.JobDao;
-import com.me.dao.ResumeDao;
 import com.me.dao.UserDao;
 import com.me.pojo.Job;
-import com.me.pojo.Resume;
 import com.me.pojo.User;
 import com.me.validator.ResumeValidator;
 
 @RequestMapping("/createjob.htm")
 @Controller
 @SessionAttributes("user")
-public class CreateJobController {
+public class CompanyCreateJobController {
 	@Autowired
 	ResumeValidator resumeValidator;
 

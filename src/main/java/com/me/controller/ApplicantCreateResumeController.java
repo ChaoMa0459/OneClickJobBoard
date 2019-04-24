@@ -25,7 +25,7 @@ import com.me.validator.ResumeValidator;
 @RequestMapping("/createresume.htm")
 @Controller
 @SessionAttributes("user")
-public class CreateResumeController {
+public class ApplicantCreateResumeController {
 	@Autowired
 	ResumeValidator resumeValidator;
 

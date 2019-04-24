@@ -17,7 +17,7 @@ import com.me.pojo.User;
 @RequestMapping("/viewresumedetail.htm")
 @Controller
 @SessionAttributes("user")
-public class ViewResumeController {
+public class ApplicantViewResumeController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String formView(ModelMap model, @ModelAttribute("resume") Resume resume, ResumeDao resumeDao,
