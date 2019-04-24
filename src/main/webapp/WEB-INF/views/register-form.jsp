@@ -85,7 +85,7 @@ background-size: 50%;">
 					<label for="type" class="col-sm-4 control-label">Type: </label>
 					<div class="col-sm-8">
 						<form:select path="type" id="type" class="form-control">
-							<form:option value="applicant">Applicant</form:option>
+							<form:option value="Applicant">Applicant</form:option>
 							<form:option value="Company">Company</form:option>
 						</form:select>
 					</div>

@@ -16,16 +16,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.me.dao.JobDao;
 import com.me.dao.ResumeDao;
 import com.me.dao.UserDao;
+import com.me.pojo.Job;
 import com.me.pojo.Resume;
 import com.me.pojo.User;
 import com.me.validator.ResumeValidator;
 
-@RequestMapping("/createresume.htm")
+@RequestMapping("/createjob.htm")
 @Controller
 @SessionAttributes("user")
-public class CreateResumeController {
+public class CreateJobController {
 	@Autowired
 	ResumeValidator resumeValidator;
 
@@ -36,7 +38,7 @@ public class CreateResumeController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String formView(ModelMap model, @ModelAttribute("resume") Resume resume, HttpSession session) {
+	public String formView(ModelMap model, @ModelAttribute("job") Job job, HttpSession session) {
 
 		// session objects
 		System.out.println("--- Session data ---");
@@ -55,31 +57,32 @@ public class CreateResumeController {
 		System.out.println("current user id: " + user.getUserId());
 		System.out.println("current username: " + user.getUsername());
 
-		return "resume-form";
+		return "job-form";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String successView(@Validated @ModelAttribute("resume") Resume resume, BindingResult bindingResult,
-			ModelMap model, ResumeDao resumeDao, UserDao userDao, HttpSession session) {
+	public String successView(@Validated @ModelAttribute("job") Job job, BindingResult bindingResult,
+			ModelMap model, JobDao jobDao, UserDao userDao, HttpSession session) {
 		if (bindingResult.hasErrors()) {
-			return "resume-form"; // the are validation errors, go to the form view
+			return "job-form"; // the are validation errors, go to the form view
 		}
 
-		// check resume name
-		String resumeName = resume.getResumeName();
+		// check job name
+		String jobName = job.getJobName();
 
+		
 		User user = (User) session.getAttribute("user");
 		long userId = (Long) session.getAttribute("userId");
 
-		Resume resumedata = resumeDao.getByUserIdAndName(userId, resumeName);
+		Job jobdata = jobDao.getByUserIdAndName(userId, jobName);
 		
 		System.out.println("--- create resume ---");
 		System.out.println("userId" + userId);
-		System.out.println("resumeName" + resumeName);
+		System.out.println("jobName" + jobName);
 		
-		if (resumedata != null) {
-			model.addAttribute("errorName", "Resume name already exists.");
-			return "resume-form";
+		if (jobdata != null) {
+			model.addAttribute("errorName", "Job name already exists.");
+			return "job-form";
 		}
 		
 		User userdata = userDao.getUserByUsername(user.getUsername());
@@ -89,11 +92,11 @@ public class CreateResumeController {
 		
 		// UserDao.getSession().load(User.class, user.getUserId());
 		
-		userdata.addResume(resume);
+		// userdata.addResume(resume);
 		// userDao.create(userdata);
 		
-		resume.setUser(userdata);
-		resumeDao.create(resume);
-		return "home-panel-applicant";
+		job.setUser(userdata);
+		jobDao.create(job);
+		return "home-panel-company";
 	}
 }

@@ -33,6 +33,9 @@ public class User {
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Resume> resumes;
 	
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Job> jobs;
+	
 	public User() {	
 	}
 	
@@ -105,6 +108,14 @@ public class User {
 			resumes = new ArrayList<Resume>();
 		}
 		resumes.add(resume);
+	}
+
+	public List<Job> getJobs() {
+		return jobs;
+	}
+
+	public void setJobs(List<Job> jobs) {
+		this.jobs = jobs;
 	}
 
 }

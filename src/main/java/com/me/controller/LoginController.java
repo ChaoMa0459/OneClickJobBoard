@@ -60,12 +60,17 @@ public class LoginController {
 		}
 		
 		session.setAttribute("userId", registerdUser.getUserId());
+		
 		// no errors, so go to the success view
 		System.out.println(user.getUsername());
 		System.out.println(user.getPassword());
 		System.out.println(user.getType());
 		
-		
-		return "home-panel";
+		String userType = user.getType();
+		if (userType.equals("Applicant")) {
+			return "home-panel-applicant";
+		} else {
+			return "home-panel-company";
+		}
 	}
 }

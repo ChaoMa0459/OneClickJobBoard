@@ -289,7 +289,7 @@
 						<label for="company" class="col-sm-4 control-label">Company
 							Name:</label>
 						<div class="col-sm-8">
-							<form:input type="text" class="form-control" id="last"
+							<form:input type="text" class="form-control" id="company"
 								path="company" placeholder="company" required="required" />
 						</div>
 					</div>

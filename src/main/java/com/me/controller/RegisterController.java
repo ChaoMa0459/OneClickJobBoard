@@ -44,8 +44,8 @@ public class RegisterController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String formView(ModelMap model, User user) {
-		user.setUsername("username"); // if object has values, these would populate the form view automatically
-		user.setPassword("pswd"); // if an existing object populates the form fields, it is called
+		 // if object has values, these would populate the form view automatically
+		 // if an existing object populates the form fields, it is called
 									// form-backing-object
 		return "register-form";
 	}

@@ -1,7 +1,5 @@
 package com.me.pojo;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,7 +13,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Resume {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO) // should be changed into AUTO?
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long resumeId;
 	
 	// basic information
