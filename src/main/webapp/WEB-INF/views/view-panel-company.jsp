@@ -33,7 +33,7 @@ background-size: 50%;">
 				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
 					href="createjob.htm">Create New Job</a></li>
 				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
-					href="login.htm">Logout</a></li>
+					href="logout.htm">Logout</a></li>
 			</ul>
 		</div>
 

@@ -34,7 +34,9 @@ public class LoginController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String formView(ModelMap model, User user) {
+	public String formView(ModelMap model, User user, HttpSession session) {
+		
+		// session.invalidate();
 		return "login-form";
 	}
 

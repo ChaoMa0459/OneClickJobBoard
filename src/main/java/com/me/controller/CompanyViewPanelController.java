@@ -1,5 +1,6 @@
 package com.me.controller;
 
+import java.util.Enumeration;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -23,7 +24,7 @@ public class CompanyViewPanelController {
 	public String formView(ModelMap model, JobChoice jobChoice, JobDao jobDao, HttpSession session) {
 
 		User user = (User) session.getAttribute("user");
-		if (user == null) {
+		if (user == null || session.getAttribute("userId") == null) {
 			return "redirect:login.htm";
 		}
 				
