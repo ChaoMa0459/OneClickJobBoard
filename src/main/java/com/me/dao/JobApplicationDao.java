@@ -34,12 +34,12 @@ public class JobApplicationDao extends DAO {
 		return applications;
 	}
 	
-	public List<JobApplication> getByUserId(long user_id) {
+	public List<JobApplication> getByResumeId(long resume_id) {
 		List<JobApplication> applications = new ArrayList<JobApplication>();
 		try {
 			begin();
-			Query q = getSession().createQuery("from JobApplication where applicant_id= :user_id");
-			q.setLong("user_id", user_id);
+			Query q = getSession().createQuery("from JobApplication where resume_id= :resume_id");
+			q.setLong("resume_id", resume_id);
 			applications = q.list();
 			commit();
 		} catch (HibernateException e) {

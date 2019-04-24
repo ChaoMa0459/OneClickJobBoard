@@ -118,7 +118,8 @@
 
 					<div class="form-group">
 						<div class="col-sm-offset-4 col-sm-8">
-							<input type="submit" class="btn btn-success" value="Apply" />
+							<a href="select-resume-applicant.htm"><input
+								class="btn btn-success" value="Apply" style="width: 65px"></a>
 						</div>
 					</div>
 

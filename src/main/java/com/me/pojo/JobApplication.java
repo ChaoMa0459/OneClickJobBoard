@@ -12,8 +12,8 @@ public class JobApplication {
 	@Column(name = "job_apply_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long jobApplyId;
-	@Column(name = "applicant_id")
-	private long applicantId;
+	@Column(name = "resume_id")
+	private long resumeId;
 	@Column(name = "job_id")
 	private long jobId;
 	
@@ -28,12 +28,12 @@ public class JobApplication {
 		this.jobApplyId = jobApplyId;
 	}
 
-	public long getApplicantId() {
-		return applicantId;
+	public long getResumeId() {
+		return resumeId;
 	}
 
-	public void setApplicantId(long applicantId) {
-		this.applicantId = applicantId;
+	public void setResumeId(long resumeId) {
+		this.resumeId = resumeId;
 	}
 
 	public long getJobId() {
