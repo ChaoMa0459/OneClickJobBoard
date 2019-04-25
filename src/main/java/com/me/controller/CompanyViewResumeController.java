@@ -33,17 +33,13 @@ public class CompanyViewResumeController {
 			return "redirect:login.htm";
 		}
 
-		System.out.println("CompanyViewResumeController: ");
-		System.out.println("resumeName: " + resumeName);
+		System.out.println("--- CompanyViewResumeController ---");
 
 		// should pass resume id instead
 		List<Resume> resumes = resumeDao.getByResumeName(resumeName);
 		resume = resumes.get(resumes.size() - 1);
 
-		System.out.println("getByResumeName: " + resume);
-
 		model.addAttribute("resume", resume);
-
 		return "view-resume-company";
 	}
 

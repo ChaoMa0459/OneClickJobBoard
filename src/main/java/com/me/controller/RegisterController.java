@@ -18,18 +18,6 @@ import com.me.validator.RegisterValidator;
 @RequestMapping("/register.htm")
 @Controller
 public class RegisterController {
-//	@Autowired
-//	private ServletContext application; // only static global instances to be AutoWired
-//	
-//	@PostConstruct
-//	public void init() {
-//		// initialize global instances
-//	}
-//
-//	@PreDestroy
-//	public void destroy() throws Exception {
-//		// do cleanup
-//	}
 
 	@Autowired
 	RegisterValidator registerValidator;
@@ -42,9 +30,6 @@ public class RegisterController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String formView(ModelMap model, User user) {
-		 // if object has values, these would populate the form view automatically
-		 // if an existing object populates the form fields, it is called
-									// form-backing-object
 		return "register-form";
 	}
 

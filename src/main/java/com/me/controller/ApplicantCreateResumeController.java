@@ -1,7 +1,5 @@
 package com.me.controller;
 
-import java.util.Enumeration;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,22 +36,10 @@ public class ApplicantCreateResumeController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String formView(ModelMap model, @ModelAttribute("resume") Resume resume, HttpSession session) {
 
-		// session objects
-		System.out.println("--- Session data ---");
-		Enumeration<String> e = session.getAttributeNames();
-		while (e.hasMoreElements()) {
-			String s = e.nextElement();
-			System.out.println(s);
-			System.out.println("**" + session.getAttribute(s));
-		}
-		System.out.println("--- ---");
-
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
 			return "redirect:login.htm";
 		}
-		System.out.println("current user id: " + user.getUserId());
-		System.out.println("current username: " + user.getUsername());
 
 		return "resume-form";
 	}
@@ -73,9 +59,9 @@ public class ApplicantCreateResumeController {
 
 		Resume resumedata = resumeDao.getByUserIdAndName(userId, resumeName);
 		
-		System.out.println("--- create resume ---");
-		System.out.println("userId" + userId);
-		System.out.println("resumeName" + resumeName);
+		System.out.println("--- ApplicantCreateResumeController ---");
+		System.out.println("userId: " + userId);
+		System.out.println("resumeName: " + resumeName);
 		
 		if (resumedata != null) {
 			model.addAttribute("errorName", "Resume name already exists.");

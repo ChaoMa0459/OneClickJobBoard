@@ -29,8 +29,6 @@ public class CompanyViewPanelController {
 				
 		long userId = (Long)session.getAttribute("userId");
 		
-		System.out.println("userId: " + userId);
-
 		List<Job> jobs = jobDao.getByUserId(userId);
 		
 		System.out.println("jobs: " + jobs.size());

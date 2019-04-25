@@ -1,7 +1,5 @@
 package com.me.controller;
 
-import java.util.Enumeration;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,16 +35,6 @@ public class CompanyCreateJobController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String formView(ModelMap model, @ModelAttribute("job") Job job, HttpSession session) {
-
-		// session objects
-		System.out.println("--- Session data ---");
-		Enumeration<String> e = session.getAttributeNames();
-		while (e.hasMoreElements()) {
-			String s = e.nextElement();
-			System.out.println(s);
-			System.out.println("**" + session.getAttribute(s));
-		}
-		System.out.println("--- ---");
 
 		User user = (User) session.getAttribute("user");
 		if (user == null) {

@@ -31,17 +31,14 @@ public class CompanyViewJobController {
 
 		long userId = (Long) session.getAttribute("userId");
 
-		System.out.println("ViewJobController: ");
+		System.out.println("--- ViewJobController ---");
 		System.out.println("userId: " + userId);
 		System.out.println("jobName: " + jobName);
 
 		job = jobDao.getByUserIdAndName(userId, jobName);
-
-		System.out.println("getByUserIdAndName: " + job);
 		
 		model.addAttribute("job", job);
 		session.setAttribute("jobId", job.getJobId());
-
 		return "view-job";
 	}
 

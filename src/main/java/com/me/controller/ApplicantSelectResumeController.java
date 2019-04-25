@@ -31,7 +31,7 @@ public class ApplicantSelectResumeController {
 
 		long userId = (Long) session.getAttribute("userId");
 
-		System.out.println("ApplicantSelectResumeController: " + userId);
+		System.out.println("--- ApplicantSelectResumeController ---");
 
 		List<Resume> resumes = resumeDao.getByUserId(userId);
 

@@ -27,19 +27,15 @@ public class ApplicantViewResumeController {
 		if (user == null || session.getAttribute("userId") == null) {
 			return "redirect:login.htm";
 		}
-
 		long userId = (Long) session.getAttribute("userId");
 
-		System.out.println("ViewResumeController: ");
+		System.out.println("--- ViewResumeController ---");
 		System.out.println("userId: " + userId);
 		System.out.println("resumeName: " + resumeName);
 
 		resume = resumeDao.getByUserIdAndName(userId, resumeName);
-
-		System.out.println("getByUserIdAndName: " + resume);
 		
 		model.addAttribute("resume", resume);
-
 		return "view-resume";
 	}
 

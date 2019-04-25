@@ -29,8 +29,6 @@ public class ApplicantViewResumePanelController {
 				
 		long userId = (Long)session.getAttribute("userId");
 		
-		System.out.println("userId: " + userId);
-
 		List<Resume> resumes = resumeDao.getByUserId(userId);
 		
 		System.out.println("resumes: " + resumes.size());
@@ -42,8 +40,7 @@ public class ApplicantViewResumePanelController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String successView(@ModelAttribute("resumeChoice") ResumeChoice resumeChoice, ModelMap model) {
 		
-		model.addAttribute("resumeName", resumeChoice.getResumeName());
-		
+		model.addAttribute("resumeName", resumeChoice.getResumeName());		
 		System.out.println("resumeName: " + resumeChoice.getResumeName());
 		
 		return "redirect:viewresumedetail.htm";

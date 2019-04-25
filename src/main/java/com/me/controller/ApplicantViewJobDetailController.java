@@ -31,13 +31,11 @@ public class ApplicantViewJobDetailController {
 
 		long userId = (Long) session.getAttribute("userId");
 
-		System.out.println("ViewJobController: ");
+		System.out.println("--- ViewJobController ---");
 		System.out.println("userId: " + userId);
 		System.out.println("jobId: " + jobId);
 
 		job = jobDao.getById(jobId);
-
-		System.out.println("getById: " + job);
 		
 		session.setAttribute("jobId", jobId);
 

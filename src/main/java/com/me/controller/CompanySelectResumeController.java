@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.me.dao.JobApplicationDao;
 import com.me.dao.ResumeDao;
-import com.me.dao.UserDao;
 import com.me.pojo.JobApplication;
 import com.me.pojo.Resume;
 import com.me.pojo.ResumeChoice;
