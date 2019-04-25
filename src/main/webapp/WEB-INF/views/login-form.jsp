@@ -17,7 +17,8 @@
 	crossorigin="anonymous">
 </head>
 
-<body style="background: url(${pageContext.request.contextPath}/resources/images/Job-Search.jpg);
+<body
+	style="background: url(${pageContext.request.contextPath}/resources/images/Job-Search.jpg);
 background-repeat: no-repeat;
 background-position: bottom center;
 background-size: 50%;">
@@ -45,7 +46,7 @@ background-size: 50%;">
 				<div class="form-group">
 					<label for="password" class="col-sm-4 control-label">Password:</label>
 					<div class="col-sm-8">
-						<form:input type="text" class="form-control" id="password"
+						<form:input type="password" class="form-control" id="password"
 							path="password" placeholder="Password" required="required" />
 					</div>
 				</div>
@@ -54,7 +55,7 @@ background-size: 50%;">
 					<label for="type" class="col-sm-4 control-label">Type: </label>
 					<div class="col-sm-8">
 						<form:select path="type" id="type" class="form-control">
-							<form:option value="applicant">Applicant</form:option>
+							<form:option value="Applicant">Applicant</form:option>
 							<form:option value="Company">Company</form:option>
 						</form:select>
 					</div>
@@ -70,8 +71,13 @@ background-size: 50%;">
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
 						<input type="submit" class="btn btn-success" value="Login" />
-						<strong><a href="register.htm" style="margin-left: 20px;">Click here to register</a></strong>
+					</div>
+				</div>
 
+				<div class="form-group">
+					<div class="col-sm-offset-4 col-sm-8">
+						<a href="register.htm"><input class="btn btn-success"
+							value="Click here to register"></a>
 					</div>
 				</div>
 

@@ -1,6 +1,6 @@
 package com.me.controller;
 
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,37 +32,40 @@ public class LoginController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String formView(ModelMap model, User user) {
+	public String formView(ModelMap model, User user, HttpSession session) {
+		
+		// session.invalidate();
 		return "login-form";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String successView(@Validated @ModelAttribute("user") User user, BindingResult bindingResult, ModelMap model,
-			UserDao userDao) {
+			UserDao userDao, HttpSession session) {
 		if (bindingResult.hasErrors()) {
 			return "login-form"; // the are validation errors, go to the form view
 		}
 
 		// check password
 		String username = user.getUsername();
-		List<User> users = userDao.getUserByUsername(username);
-		if (users.size() == 0) {
+		User registerdUser = userDao.getUserByUsername(username);
+		if (registerdUser == null) {
 			model.addAttribute("errorLogin", "No such user.");
 			return "login-form";
 		}
 		
-		User registerdUser = users.get(0);
 		// check confirm password
 		if (!user.getPassword().equals(registerdUser.getPassword())) {
 			model.addAttribute("errorLogin", "Wrong password.");
 			return "login-form";
 		}
-		// no errors, so go to the success view
-		System.out.println(user.getUsername());
-		System.out.println(user.getPassword());
-		System.out.println(user.getType());
 		
-		
-		return "home-panel";
+		// no errors, so go to the success view		
+		session.setAttribute("userId", registerdUser.getUserId());		
+		String userType = user.getType();
+		if (userType.equals("Applicant")) {
+			return "home-panel-applicant";
+		} else {
+			return "home-panel-company";
+		}
 	}
 }

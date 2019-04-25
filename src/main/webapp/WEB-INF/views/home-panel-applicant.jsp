@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Job Board Home</title>
+<title>Job Board Home Panel Applicant</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -30,13 +30,15 @@ background-size: 50%;">
 				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
 					href="createresume.htm">Create New Resume</a></li>
 				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
-					href="jobs.htm">Apply for Jobs</a></li>
+					href="viewjob-applicant.htm">Apply for Jobs</a></li>
 				<li style="border: 1px solid #337ab7; border-radius: 6px;"><a
-					href="login.htm">Logout</a></li>
+					href="logout.htm">Logout</a></li>
 			</ul>
 		</div>
 		<div class="welcome" style="position: relative; left: 225px; top: 10px; width: 70%;">
-			<h1>Welcome!</h1>
+			<h1>Welcome to the Quick Apply! <br></h1>
+			<h3>Source Code:<br>
+			<a href="https://github.com/SwagMC/OneClickJobBoard">https://github.com/SwagMC/OneClickJobBoard</a></h3>
 		</div>
 	</div>
 </body>

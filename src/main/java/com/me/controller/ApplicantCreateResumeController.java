@@ -1,9 +1,5 @@
 package com.me.controller;
 
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.me.dao.ResumeDao;
+import com.me.dao.UserDao;
 import com.me.pojo.Resume;
 import com.me.pojo.User;
 import com.me.validator.ResumeValidator;
@@ -26,7 +23,7 @@ import com.me.validator.ResumeValidator;
 @RequestMapping("/createresume.htm")
 @Controller
 @SessionAttributes("user")
-public class ResumeController {
+public class ApplicantCreateResumeController {
 	@Autowired
 	ResumeValidator resumeValidator;
 
@@ -38,49 +35,51 @@ public class ResumeController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String formView(ModelMap model, @ModelAttribute("resume") Resume resume, HttpSession session) {
-		
-		System.out.println("--- Session data ---");
-		  Enumeration<String> e = session.getAttributeNames();
-		  while (e.hasMoreElements()){
-			String s = e.nextElement();
-			System.out.println(s);
-			System.out.println("**" + session.getAttribute(s));
-		  }
-		User user = (User)session.getAttribute("user");
-		System.out.println("current user id: " + user.getUserId());
-		System.out.println("current username: " + user.getUsername());
-		
-		if (model.get("user") == null) {
+
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
 			return "redirect:login.htm";
 		}
+
 		return "resume-form";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String successView(@Validated @ModelAttribute("resume") Resume resume, BindingResult bindingResult, ModelMap model,
-			ResumeDao resumeDao, HttpSession session) {
+	public String successView(@Validated @ModelAttribute("resume") Resume resume, BindingResult bindingResult,
+			ModelMap model, ResumeDao resumeDao, UserDao userDao, HttpSession session) {
 		if (bindingResult.hasErrors()) {
-			return "login-form"; // the are validation errors, go to the form view
+			return "resume-form"; // the are validation errors, go to the form view
 		}
 
 		// check resume name
 		String resumeName = resume.getResumeName();
+
+		User user = (User) session.getAttribute("user");
+		long userId = (Long) session.getAttribute("userId");
+
+		Resume resumedata = resumeDao.getByUserIdAndName(userId, resumeName);
 		
-		User user = (User)session.getAttribute("user");
-		long user_id = user.getUserId();
-		System.out.println("current user id: " + user.getUserId());
-		System.out.println("current username: " + user.getUsername());
+		System.out.println("--- ApplicantCreateResumeController ---");
+		System.out.println("userId: " + userId);
+		System.out.println("resumeName: " + resumeName);
 		
-		List<Resume> resumes = resumeDao.getByUserIdAndName(user_id, resumeName);
-		if (resumes.size() != 0) {
+		if (resumedata != null) {
 			model.addAttribute("errorName", "Resume name already exists.");
-			return "login-form";
+			return "resume-form";
 		}
 		
-		// TODO how to save with foreign key
-		// TODO it inserts another User data
-		resume.setUser(user);
+		User userdata = userDao.getUserByUsername(user.getUsername());
+		
+		System.out.println("current user id: " + userdata.getUserId());
+		System.out.println("current username: " + userdata.getUsername());
+		
+		// UserDao.getSession().load(User.class, user.getUserId());
+		
+		userdata.addResume(resume);
+		// userDao.create(userdata);
+		
+		resume.setUser(userdata);
 		resumeDao.create(resume);
-		return "home-panel";
+		return "home-panel-applicant";
 	}
 }
