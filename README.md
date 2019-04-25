@@ -3,20 +3,32 @@
 This project is a one-click job site, aiming to simplify the job application procedures. It avoids the inaccurate resume parsing and repeated information inputting. Unlike NUCareers, this site uses information inputting instead of resume uploading. After saving information, both job seekers and HRs can apply for job or select candidates for interview with a single click. 
 
 ## Main Functionality:
-User management: Registration and login for both applicants and companies.
+### User management: 
 
-Resume Saving: Applicants can save multiple resumes into the system.
+Registration and login for both applicants and companies.
 
-Job Posting: Companies can post multiple jobs into the system.
+### Resume Saving: 
 
-Job Application: Applicants can apply for jobs by one click.
+Applicants can save multiple resumes into the system.
 
-Interview Selection: Companies can select resumes for interview.
+### Job Posting: 
 
-Email Sending: Companies can send interview emails to selected applicants.
+Companies can post multiple jobs into the system.
+
+### Job Application: 
+
+Applicants can apply for jobs by one click.
+
+### Interview Selection: 
+
+Companies can select resumes for interview.
+
+### Email Sending: 
+
+Companies can send interview emails to selected applicants.
 
 ## Technologies:
-Back-end:
+### Back-end:
 
 Spring MVC
 
@@ -24,8 +36,7 @@ Hibernate
 
 MySQL
 
-
-Front-end:
+### Front-end:
 
 JSP
 
@@ -33,9 +44,7 @@ JSTL
 
 Bootstrap
 
-
-
-Other:
+### Other:
 
 Git
 
@@ -49,7 +58,7 @@ Mail API
 
 ## Roles and Tasks:
 
-Applicant User:
+### Applicant User:
 
 Register
 
@@ -63,8 +72,7 @@ View jobs posted
 
 Apply for a job with a selected resume
 
-
-Company User:
+### Company User:
 
 Register
 
